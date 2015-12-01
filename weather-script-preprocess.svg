@@ -27,16 +27,14 @@
     </defs>
 
 
-    <use xlink:href="#SI0" height="325%" width="325%" 
-           transform="scale(1.25) translate(5.055 20.166)" y="100" x="30"/>
+    <use xlink:href="#$I0" height="325%" width="325%" 
+           transform="scale(1.55) translate(5.055 20.166)" y="30" x="50"/>
     <use xlink:href="#$I1" height="120%" width="120%" 
-           transform="scale(1.2) translate(34.167 399.725)"/>
+           transform="scale(1.2) translate(34.167 419.725)"/>
     <use xlink:href="#$I2" height="120%" width="120%" 
-           transform="scale(1.2) translate(200 399.725)"/>
+           transform="scale(1.2) translate(200 419.725)"/>
     <use xlink:href="#$I3" height="120%" width="120%" 
-           transform="scale(1.2) translate(365.833 399.725)"/>
-    <image xlink:href="pic/yin.gif" width="168" height="120"  y="100" x="30"/>           
-    <image xlink:href="pic/baoxue.gif" width="168" height="120"  y="230" x="30"/>           
+           transform="scale(1.2) translate(365.833 419.725)"/>        
     <g font-family="Microsoft YaHei">
         <text style="text-anchor:middle;" font-size="35px" y="52.256058"
               x="300">

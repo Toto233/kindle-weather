@@ -64,8 +64,7 @@ if len(sys.argv) >= 5 and sys.argv[4] != 0:
 output = codecs.open(SVG_FILE, "r", encoding="utf-8").read()
 
 _MAP = {
-    "$I": WeatherAPI.dayPic,
-    "$N": WeatherAPI.nightPic,
+    "$I": WeatherAPI.getPic,
     "$H": WeatherAPI.weather,
     "$L": WeatherAPI.temperature,
 }
@@ -75,8 +74,14 @@ for x in _MAP.keys():
                                 "%s" % _MAP[x](weather_obj, i))
 
 # Replace refresh time
-output = output.replace("$TIME",
-                        datetime.datetime.now().strftime("%b %d %a %H:%M"))
+
+days_of_week = [u"周一", u"周二", u"周三", u"周四", u"周五", u"周六", u"周日"]
+now=datetime.datetime.now()
+weekday = days_of_week[datetime.datetime.now().weekday()]
+datestr = now.strftime("%m-%d  ")
+timestr = now.strftime(" %H:%M ")
+output = output.replace("  $TIME",
+                        datestr+weekday+timestr)
 
 # Updaet AQI. TODO(Gris Ge): still place holder yet.
 output = output.replace("$AQI", "AQI:"+weather_obj._aqi)
@@ -88,7 +93,6 @@ day_one = weather_obj.today
 
 # Insert days of week
 one_day = datetime.timedelta(days=1)
-days_of_week = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
 for i in range(MAX_WEATHER_DAY_COUNT + 1):
     output = output.replace("$D%s" % i,
