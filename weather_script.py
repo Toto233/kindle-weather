@@ -1,4 +1,5 @@
 #!/usr/bin/python2
+# -*- coding: utf-8 -*-
 # Copyright (c) 2015 Gris Ge
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -31,6 +32,7 @@
 # September 2012
 
 import codecs
+import time
 import datetime
 import os
 import sys
@@ -53,6 +55,8 @@ if len(sys.argv) < 4:
 
 weather_obj = WeatherAPI(sys.argv[1], sys.argv[2], sys.argv[3])
 
+print weather_obj.__dict__
+
 if len(sys.argv) >= 5 and sys.argv[4] != 0:
     SVG_FILE = SVG_LANSCAPE_FILE
 
@@ -60,11 +64,11 @@ if len(sys.argv) >= 5 and sys.argv[4] != 0:
 output = codecs.open(SVG_FILE, "r", encoding="utf-8").read()
 
 _MAP = {
-    "$I": WeatherAPI.condition,
-    "$H": WeatherAPI.temp_max,
-    "$L": WeatherAPI.temp_min,
+    "$I": WeatherAPI.dayPic,
+    "$N": WeatherAPI.nightPic,
+    "$H": WeatherAPI.weather,
+    "$L": WeatherAPI.temperature,
 }
-
 for x in _MAP.keys():
     for i in range(MAX_WEATHER_DAY_COUNT + 1):
         output = output.replace("%s%d" % (x, i),
@@ -75,7 +79,10 @@ output = output.replace("$TIME",
                         datetime.datetime.now().strftime("%b %d %a %H:%M"))
 
 # Updaet AQI. TODO(Gris Ge): still place holder yet.
-output = output.replace("$AQI", "Unknown")
+output = output.replace("$AQI", "AQI:"+weather_obj._aqi)
+
+# CITY NAME.
+output = output.replace("$CITY", weather_obj._currentCity)
 
 day_one = weather_obj.today
 

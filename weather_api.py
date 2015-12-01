@@ -14,6 +14,8 @@
 # License along with this library; If not, see <http://www.gnu.org/licenses/>.
 #
 # Author: Gris Ge <cnfourt@gmail.com>
+import sys
+import time
 import datetime
 import json
 from urllib2 import urlopen
@@ -29,56 +31,68 @@ def _parse_forecast(data_json):
     return [WeatherData]
     """
     tmp_list = []
-    for data in data_json["forecast"]["simpleforecast"]["forecastday"]:
-        tmp_list.append(WeatherData(data["icon"], data["high"]["celsius"],
-                                    data["low"]["celsius"]))
+    for data in data_json["results"][0]["weather_data"]:
+        #print data["date"], data["dayPictureUrl"],data["nightPictureUrl"],data["weather"],data["wind"],data["temperature"]
+        tmp_list.append(WeatherData(data["date"], data["dayPictureUrl"],data["nightPictureUrl"],data["weather"],data["wind"],data["temperature"]))
     return tmp_list
 
 
 class WeatherData(object):
-    def __init__(self, condition, temp_max, temp_min):
-        self.condition = condition
-        self.temp_max = temp_max
-        self.temp_min = temp_min
+    def __init__(self, date, dayPictureUrl, nightPictureUrl,weather,wind,temperature):
+        self.date = date
+        self.dayPictureUrl = dayPictureUrl
+        self.nightPictureUrl = nightPictureUrl
+        self.weather = weather
+        self.wind = wind
+        self.temperature = temperature
 
 
 class WeatherAPI(object):
 
-    _BASE_API_URL = "http://api.wunderground.com/api/"
-
+    _BASE_API_URL = "http://api.map.baidu.com/telematics/v3/weather?output=json"
     def __init__(self, api_key, lat, lon):
-        url_api_key = "appid=%s" % api_key
-        url_location = "lat=%s&lon=%s" % (lat, lon)
-
+        url_api_key = "&ak=%s" % api_key
+        url_location = "&location=%s,%s" % (lat, lon)
         forecast_json = _fetch_json(
-            "%s/%s/forecast/q/%s,%s.json" %
-            (WeatherAPI._BASE_API_URL, api_key, lat, lon))
+            "%s%s%s" %
+            (WeatherAPI._BASE_API_URL, url_api_key, url_location))
 
         self._data = _parse_forecast(forecast_json)
         self._today = datetime.date.today()
-
-    def temp_max(self, day):
+        self._currentCity=forecast_json["results"][0]["currentCity"]
+        self._aqi=forecast_json["results"][0]["pm25"]
+    def temperature(self, day):
         """
         Input day as integer, 0 means today, 1 means tomorrow, max is 3.
         """
         if day > 3:
             raise Exception("Invalid day, should less or equal to 3")
 
-        return self._data[day].temp_max
+        return self._data[day].temperature
 
-    def temp_min(self, day):
+    def date(self, day):
         if day > 3:
             raise Exception("Invalid day, should less or equal to 3")
-        return self._data[day].temp_min
+        return self._data[day].date
 
-    def condition(self, day):
+    def weather(self, day):
         if day > 3:
             raise Exception("Invalid day, should less or equal to 3")
-        return self._data[day].condition
-
+        return self._data[day].weather
+    def dayPic(self, day):
+        if day > 3:
+            raise Exception("Invalid day, should less or equal to 3")
+        return self._data[day].dayPictureUrl
+    def nightPic(self, day):
+        if day > 3:
+            raise Exception("Invalid day, should less or equal to 3")
+        return self._data[day].nightPictureUrl
     @property
     def today(self):
         """
         Return a object of datetime.date
         """
         return self._today
+
+if __name__ == "__main__":
+    weather = WeatherAPI( sys.argv[1],sys.argv[2],sys.argv[3])

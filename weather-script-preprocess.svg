@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" height="800" width="600" version="1.1"
+﻿<svg xmlns="http://www.w3.org/2000/svg" height="800" width="600" version="1.1"
      xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
 <path id="chanceflurries" d="m42.732,50.287,3.955,5.841,7.365,0,3.398-5.841-3.58-6.22-7.379,0zm3.033,46.974,0-13.207-7.379,4.15-3.759-2.152,0-4.653,10.943-6.22,0-8.68-7.939,5.102,0-9.196-7.589,4.374,0,12.468-4.151,2.572-3.508-2.321,0-8.356-11.518,6.498-4.919-2.07,0-5.27,12.089-6.609-7.561-3.801,0-4.822,4.291-2.349,10.845,6.386,7.533-4.346-0.182-0.139-7.701-4.417,7.477-4.64-7.505-4.346-10.844,6.372-4.068-2.026,0-4.808,7.339-4.123-11.713-6.36,0-5.269,4.5-2.319,11.544,6.666,0-8.497,3.48-2.348,4.264,2.46-0.028,12.718,7.756,4.43-0.027-8.986,8.134,4.375,0-8.68-10.943-6.233,0-4.612,3.759-2.18,7.379,4.151,0-13.18,4.222-2.768,4.261,2.768,0,13.18,7.646-4.235,3.845,2.544,0,4.151-11.322,6.414,0,8.68,7.744-4.724,0,9.448,7.979-4.348,0-13.598,3.844-1.789,4.038,1.789,0,8.694,11.879-6.416,4.153,2.53,0,4.919-11.601,6.597,7.254,4.066,0,4.697-3.76,2.083-11.138-6.583-7.702,4.892,7.449,4.642-7.673,4.416,7.926,4.15,11.138-6.221,3.578,2.53,0,4.487-6.988,3.927,11.126,6.61,0,5.188-4.71,2.152-10.931-6.221,0,8.232-3.927,2.194-3.843-2.194,0-12.496-8.092-4.611,0,8.68-7.744-4.725,0,8.68,10.944,6.22,0,4.92-3.776,1.886-7.337-4.15,0,13.207-4.26,2.738z"/>
@@ -27,131 +27,76 @@
     </defs>
 
 
-    <use xlink:href="#$I0" height="325%" width="325%" 
-           transform="scale(3.25) translate(5.055 20.166)"/>
+    <use xlink:href="#SI0" height="325%" width="325%" 
+           transform="scale(1.25) translate(5.055 20.166)" y="100" x="30"/>
     <use xlink:href="#$I1" height="120%" width="120%" 
            transform="scale(1.2) translate(34.167 399.725)"/>
     <use xlink:href="#$I2" height="120%" width="120%" 
            transform="scale(1.2) translate(200 399.725)"/>
     <use xlink:href="#$I3" height="120%" width="120%" 
            transform="scale(1.2) translate(365.833 399.725)"/>
-
-    <g font-family="DejaVu Sans">
+    <image xlink:href="pic/yin.gif" width="168" height="120"  y="100" x="30"/>           
+    <image xlink:href="pic/baoxue.gif" width="168" height="120"  y="230" x="30"/>           
+    <g font-family="Microsoft YaHei">
         <text style="text-anchor:middle;" font-size="35px" y="52.256058"
               x="300">
             $TIME
         </text>
-        <text style="text-anchor:middle;" font-size="35px" y="121.70689" 
-              x="446.26932">
-            High
-        </text>
+        <text style="text-anchor:middle;" font-size="35px" y="102.256058"
+              x="300">
+            $CITY
+        </text>   
+        
         <text style="text-anchor:end;" font-size="100px" y="209.20592"
-              x="526.72095">
+              x="546.72095">
             $H0
         </text>
-        <text style="text-anchor:middle;" font-size="64px" y="182.48717"
-              x="548.30981">
-            °C
-        </text>
-        <text style="text-anchor:middle;" font-size="35px" y="275.13895"
-              x="440.80057">
-            Low
-        </text>
         <text style="text-anchor:end;" font-size="100px" y="359.8533"
-              x="526.23267">
+              x="546.23267">
             $L0
-        </text>
-        <text style="text-anchor:middle;" font-size="64px" y="333.13455"
-              x="548.30981">
-            °C
-        </text>
-
+        </text>        
+        <text style="text-anchor:end;" font-size="36px" y="400"
+              x="380">
+            $AQI
+        </text>        
         <text style="text-anchor:middle;" font-size="32px" y="465.16922"
               x="102.92969">
             $D1
         </text>
-        <text style="text-anchor:middle;" font-size="20px" y="635.68347"
-              x="74.958336">
-            High
-        </text>
-        <text style="text-anchor:end;" font-size="58px" y="686.3255"
-              x="116.05887">
+        <text style="text-anchor:middle;" font-size="30px" y="686.3255"
+              x="102.92969">
             $H1
         </text>
-        <text style="text-anchor:middle;" font-size="37px" y="670.86145"
-              x="134.01662">
-            °C
-        </text>
-        <text style="text-anchor:middle;" font-size="20px" y="724.48578"
-              x="71.906197">
-            Low
-        </text>
-        <text style="text-anchor:end;" font-size="58px" y="773.51617"
-              x="116.00232">
+
+        <text style="text-anchor:middle;" font-size="30px" y="773.51617"
+              x="102.92969">
             $L1
         </text>
-        <text style="text-anchor:middle;" font-size="37px" y="758.05206"
-              x="134.01663">
-            °C
-        </text>
-
         <text style="text-anchor:middle;" font-size="32px" y="466.15359"
               x="300.3125">
             $D2
         </text>
-        <text style="text-anchor:middle;" font-size="20px" y="635.68347"
-              x="273.95834">
-            High
-        </text>
-        <text style="text-anchor:end;" font-size="58px" y="686.3255"
-              x="314.15454">
+        <text style="text-anchor:middle;" font-size="30px" y="686.3255"
+              x="300.3125">
             $H2
         </text>
-        <text style="text-anchor:middle;" font-size="37px" y="670.86145"
-              x="333.01663">
-            °C
-        </text>
-        <text style="text-anchor:middle;" font-size="20px" y="724.48578"
-              x="270.90619">
-            Low
-        </text>
-        <text style="text-anchor:end;" font-size="58px" y="773.51617"
-              x="314.08383">
+        <text style="text-anchor:middle;" font-size="30px" y="773.51617"
+              x="300.3125">
             $L2
         </text>
-        <text style="text-anchor:middle;" font-size="37px" y="758.05206"
-              x="333.0166">
-            °C
-        </text>
-
         <text style="text-anchor:middle;" font-size="32px" y="466.15359"
               x="499.82813">
             $D3
         </text>
-        <text style="text-anchor:middle;" font-size="20px" y="635.68347"
-              x="472.95834">
-            High
-        </text>
-        <text style="text-anchor:end;" font-size="58px" y="686.3255"
-              x="513.30994">
+        <text style="text-anchor:middle;" font-size="30px" y="686.3255"
+              x="499.82813">
             $H3
         </text>
-        <text style="text-anchor:middle;" font-size="37px" y="670.86145"
-              x="532.0166">
-            °C
-        </text>
-        <text style="text-anchor:middle;" font-size="20px" y="724.48578"
-              x="469.90619">
-            Low
-        </text>
-        <text style="text-anchor:end;" font-size="58px" y="773.51617"
-              x="513.73383">
+        <text style="text-anchor:middle;" font-size="30px" y="773.51617"
+              x="499.82813">
             $L3
         </text>
-        <text style="text-anchor:middle;" font-size="37px" y="758.05206"
-              x="532.0166">
-            °C
-        </text>
+
     </g>
 
     <path d="m199,447.35,0,321.5,3,0,0-321.5-3,0z"/>
