@@ -88,32 +88,39 @@ class WeatherAPI(object):
     def getPic(self, day):
         if day > 3:
             raise Exception("Invalid day, should less or equal to 3")
-        dic={"mai":"hazy","qing":"clear","duoyun":"cloudy","yin":"cloudy","wu":"fog","xiaoxue":"snow","zhongxue":"snow","daxue":"snow"}
+        dic={"qing":"qing","duoyun":"duoyun","yin":"yin","zhenyu":"zhenyu",
+        "leizhenyu":"leizhenyu","leizhenyubanyoubingbao":"leizhenyubanyoubingbao",
+        "yujiaxue":"yujiaxue","xiaoyu":"rain","zhongyu":"rain","dayu":"rain",
+        "baoyu":"leizhenyu","dabaoyu":"leizhenyu","tedabaoyu":"leizhenyu",
+        "zhenxue":"zhenxue","xiaoxue":"snow","zhongxue":"snow","daxue":"snow","baoxue":"snow",
+        "wu":"wu","dongyu":"dongyu","shachenbao":"shachenbao",
+        "fuchen":"dust","yangsha":"shachenbao","qiangshachenbao":"shachenbao","mai":"kouzhao"}
+
         org=""
         now=time.localtime()
-        str_now = time.strftime("%m", now )   
+        str_now = time.strftime("%m", now )
         if(int(str_now)>7&int(str_now)<19):
             org =self._data[day].dayPictureUrl.split('/')[-1][0:-4]
         else:
             org =self._data[day].nightPictureUrl.split('/')[-1][0:-4]
-        
+
         if day > 0:
             print self._data[day].dayPictureUrl.split('/')[-1][0:-4],dic[self._data[day].dayPictureUrl.split('/')[-1][0:-4]]
             return dic[self._data[day].dayPictureUrl.split('/')[-1][0:-4]]
-        
+
         if(int(str_now)>7&int(str_now)<19):
             print org,dic[org]
             return  dic[org]
         else:
             print org,dic[org]
             return  dic[org]
-        
-        
+
+
 #=============
 
 
 
-    
+
     @property
     def today(self):
         """
